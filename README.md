@@ -41,39 +41,24 @@ Example: "hat" -> "cat"
     1. Dictionary will hold enough intermediate strings for a path to be formed?
     2. If there is no path available, what should the function return? (Null? 0?)
 
-3. Can we assume that both strings being lowercase means that there will be no symbols or numbers in the starting and ending words?
+4. Can we assume that both strings being lowercase means that there will be no symbols or numbers in the starting and ending words?
 
-4. The function is required to return *"the shortest possible path"* 
+5. The function is required to return *"the shortest possible path"* 
     1. What format would you want the shortest possible path to be returned as?
         - Should I return the shortest possible path as an array that holds all the paths necessary to change from start string to end string? 
-            - Example: "cat" -> "catch"
-                - Path1: "cat" -> add "c", check that "catc" exists in dictionary -> "catc"
-                - Path2: "catc" -> add "h" check that "catch" exists in dictionary -> "catch"
-                - return: ["addition", "addition"]
+            - Example: "cat" -> "bag"
+                - Path1: "cat" -> change "a" to "b" -> "bat"
+                - Path2: "bat" -> change "t" to "g" and check that "bag" exists in dictionary -> "bag"
+                - return: ["change", "change"]
+6. What format will the dictionary provided hold the intermediate words? 
+    - key = "intermediate word string"
+    - value = (?) 
 
 ### Edge Cases
-    1. 
-    2. 
+1. Can start and end words be empty strings?
 
 ### Solution Thoughts: 
 #### Prioritizing Time Complexity:
 Assuming that the start and end strings are all the english alphabets in lowercase.
 
-1. Create a dictionary that holds the alphabets as keys, and the values are the end word's indices when the letter occurs. If a letter is not in the end word, the value for that letter is *null*. 
-    
-    1. Example: "hat" 
-        ```py
-        dictionary = {
-            "a" : 1,
-            "b" : null,
-            "c" : null,
-            "h" : 0,
-            "t" : 2
-            "z" = null
-        } 
-        ```
-2. Use dictionary of instances in end word to determine whether to keep a letter in starting word or to add a letter or to delete a letter. 
-
-    1. The instances dictionary will tell us: 
-        - If the same letter exists in starting and ending words.
-        - If the order of the letters matches (?) // - write this part clearer 
+1. 
