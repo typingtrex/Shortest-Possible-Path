@@ -24,11 +24,10 @@ Technical was provided: 11/21/2023 4:40 PM EST
 
 ### Clarifying Questions: 
 
-1. For the assumption of *"Only one letter can be changed, added, or deleted at a time"*, is a letter being changed a swap of letters? 
-    
-    Example: "hat" -> "cat" 
+1. For the assumption of *"Only one letter can be changed, added, or deleted at a time"*, is a letter being changed a swap of letters?     
+Example: "hat" -> "cat" 
     - "hat" -> change/swap "h" to "c" -> "cat" 
-        - *change* is **one path step** by swapping "h" and "c".
+    - *change* is **one path step** by swapping "h" and "c".
     
     **OR**
         
