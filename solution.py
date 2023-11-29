@@ -12,57 +12,66 @@ from collections import deque
 
 
 class Solution: 
-    def shortestPossiblePath(self, startWord: str, endWord: str, dictionary: dict):
+    def shortestPossiblePath(self, startWord: str, endWord: str, dictionary: list):
+        # End word will always be in dictionary
         # if the end word is not in the dictionary, return 0
-        if endWord not in dictionary: 
-            return 0
+        # if endWord not in dictionary: 
+            # return 0
+        print("before", dictionary)
+        dictionarySet = set(dictionary)
+        print("AFTER", dictionarySet)
         
         # Utilizing a queue to hold the starting word (later current word) and total path number
         queue = deque([startWord, 1])
-
+        print("this is queue", queue)
         # Breadth-first-search loop
         while queue:
             # FIFO (First In First Out) Dequeue the leftmost element to get word and path number
-            # 
-            currentWord, length = queue.popleft()
+            
+            currentWord = queue.popleft()
+            length = queue.popleft()
+            print("what is currentWord?? ", currentWord)
+            print("LENGTH: ", length)
         # print("This is the current word: ", currentWord)
         # print("this is length: ", length)
         # print("This is the QUEUE: ", queue)
 
         # Check if the current word is the target word
-        if currentWord == endWord:
-            return length
+            if currentWord == endWord:
+                return length
 
-        # Explore all possible one-character transformations of the current word
-        for i in range(len(currentWord)):
-            for char in 'abcdefghijklmnopqrstuvwxyz':
-                # Generate a new word by replacing the current character
-                nextWord = currentWord[:i] + char + currentWord[i + 1:]
-                # print("current word: ", current_word)
-                # print("current_word[:i] ISSS: ", current_word[:i])
-                # print("CHAR is: ", char)
-                # print("currentWORD current_word[i + 1:]: ", current_word[i + 1:])
-                # Check if the new word is in the dictionary
-                if nextWord in dictionary:
-                # Remove the new word from the dictionary to avoid revisiting it
-                    dictionary.remove(nextWord)
-                # Enqueue the new state with the updated length
-                    queue.append((nextWord, length + 1))
-                    print('queue ', queue)
+            # Explore all possible one-character transformations of the current word
+            for i in range(len(currentWord)):
+                for char in 'abcdefghijklmnopqrstuvwxyz':
+                    # Generate a new word by replacing the current character
+                    nextWord = currentWord[:i] + char + currentWord[i + 1:]
+                    # print("current word: ", current_word)
+                    # print("current_word[:i] ISSS: ", current_word[:i])
+                    # print("CHAR is: ", char)
+                    # print("currentWORD current_word[i + 1:]: ", current_word[i + 1:])
+                    # Check if the new word is in the dictionary
+                    if nextWord in dictionary:
+                    # Remove the new word from the dictionary to avoid revisiting it
+                        dictionary.remove(nextWord)
+                    # Enqueue the new state with the updated length
+                        queue.append((nextWord, length + 1))
+                        print('queue ', queue)
         # If no valid path is found
         return 0
 
 
 start = "hit"
 end = "cog"
-dictionary = {
-    "hot": True,
-    "dot": True,
-    "dog": True,
-    "lot": True,
-    "log": True,
-    "cog": True
-}
+# dictionary = {
+#     "hot": True,
+#     "dot": True,
+#     "dog": True,
+#     "lot": True,
+#     "log": True,
+#     "cog": True
+# }
+
+dictionary = ["hot", "dog", "dot", "lot", "log", "cog"]
 
 # Creating an instance of the Solution class
 solutionInstance = Solution()
@@ -71,5 +80,5 @@ solutionInstance = Solution()
 result = solutionInstance.shortestPossiblePath(start, end, dictionary)
 
 # Printing the result
-print(result) # Output: 5
+print("RESULT IS: ", result) # Output: 5
 
