@@ -39,11 +39,16 @@ def addLetter(wordInfo, hashmap):
   alphabets = 'abcdefghijklmnopqrstuvwxyz'
   word = wordInfo[0]
   pathLength = wordInfo[1]
+  nextPathLength = pathLength + 1
 
+  # adding a letter from (a - z) for each index in word -- will this add to the end of the word as well?
   for i in range(len(word)):
     for char in alphabets:
-      transition = word[:i] + char + word[i:]
-
+      nextWord = word[:i] + char + word[i:]
+      print("word: ", word)
+      print("nextWord", nextWord)
+      if nextWord in hashmap:
+        transitionWords.append([nextWord, nextPathLength])
 
   return transitionWords
 
