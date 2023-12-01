@@ -1,3 +1,5 @@
+from collections import deque
+
 # -------- Function File ----------------------------------------------------------
 '''
   1. Below you will find the function that returns the shortest possible path from a start word to an end word.
@@ -11,13 +13,14 @@ def shortestPossiblePath(start, end, dictionaryList):
 
   queue = [[start, 1]]
 
-  while queue :
+  while queue:
     current = queue.pop(0)
     currentWord = current[0]
 
     # our baseline for the return result:
     if currentWord == end:
-      return resultList(visitedHashmap)
+      # print("path length is: ", current[1])
+      return resultList(start, end, visitedHashmap)
 
     addList = addLetter(current, dictionarySet, visitedHashmap)
     deleteList = deleteLetter(current, dictionarySet, visitedHashmap)
@@ -27,7 +30,6 @@ def shortestPossiblePath(start, end, dictionaryList):
     queue.extend(addList)
     queue.extend(deleteList)
     queue.extend(changeList)
-    print("current queue is: ", queue)
 
 
 #  ---------- SUB FUNCTIONS -------------------------------------------------------
@@ -104,15 +106,32 @@ def changeLetter(wordInfo, dictionary, visitedHashmap):
 
 
 #  ------- CREATE LIST FROM START TO END WITH THE SHORTEST PATHWAY ----------------
-def resultList(visitedHashmap):
+def resultList(start, end, visitedHashmap):
   # use end word to traverse back through the
-  print("visted dictionary ", visitedHashmap)
+  shortestPathway = [end]
+
+  # use deque to make adding to the left an O(1) Time Complexity
+  shortestPathway = deque(shortestPathway)
+
+  word = end
+
+  while (word != start):
+    previousWord = visitedHashmap[word]
+    shortestPathway.appendleft(previousWord)
+    word = previousWord
+
+  # change back format from deque to a list
+  resultingPath = [*shortestPathway]
+  return resultingPath
 
 
 
 # --------- TEST EXAMPLES ---------------------------------------------------------
 first = "tag"
 last = "bowl"
-listOfWords = ["tag", "tar", "bar", "boar", "boa", "bow", "bowl", "fowl", "rag"]
+listOfWords1 = ["tag", "tar", "bar", "boar", "boa", "bow", "bowl", "fowl", "rag", "tal", "bal", "bol"]
+listOfWords2 = ["tag", "tar", "bar", "boar", "boa", "bow", "bowl", "fowl", "rag"]
 
-shortestPossiblePath(first, last, listOfWords)
+
+print(shortestPossiblePath(first, last, listOfWords1))
+print(shortestPossiblePath(first, last, listOfWords2))
