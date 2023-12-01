@@ -1,4 +1,5 @@
-from collections import deque
+# from collections import deque
+# from queue import Queue
 
 # -------- Function File --------------------
 '''
@@ -12,11 +13,25 @@ class ShortestPossiblePath:
     self.start = start
     self.end = end
     self.dictionaryList = dictionaryList
+    # To make look up in the dictionary O(1) time complexity as opposed to O(N), where N is equal to the number of words in dictionaryList
+    self.dictionarySet = set(dictionaryList)
 
   def shortestPathway(self):
-    #  --- To make look up in the dictionary O(1) time complexity as opposed to O(N), where N is equal to the number of words in dictionaryList
-    dictionarySet = set(self.dictionaryList)
-    print("dictionary is: ", dictionarySet, self.dictionaryList)
+    # Implementing a Breadth First Search:
+    # queue = deque([self.start, 1])
+    # queue = Queue([self.start, 1])
+    queue = [[self.start, 1]]
+    count = 1
+    while queue:
+      current = queue.pop(0)
+      currentWord = current[0]
+      currentLength = current[1]
+      print("popped: ", current, currentWord, currentLength, count)
+      count += 1
+    # print("dictionary is: ", self.dictionarySet, self.dictionaryList)
+
+  # def addLetter(self):
+  #   # ------ See if there are any changes that exist in the dictionary
 
 
 
