@@ -10,9 +10,8 @@ def shortestPossiblePath(start, end, dictionaryList):
   visitedHashmap = dict()
 
   queue = [[start, 1]]
-  count = 1
 
-  while queue and count < 4:
+  while queue :
     current = queue.pop(0)
     currentWord = current[0]
 
@@ -20,22 +19,21 @@ def shortestPossiblePath(start, end, dictionaryList):
     if currentWord == end:
       return resultList(visitedHashmap)
 
-    addList = addLetter(current)
-    deleteList = deleteLetter(current)
-    changeList = changeLetter(current)
+    addList = addLetter(current, dictionarySet, visitedHashmap)
+    deleteList = deleteLetter(current, dictionarySet, visitedHashmap)
+    changeList = changeLetter(current, dictionarySet, visitedHashmap)
 
     # adding all the transitionWords to check from add, delete, and change functions to the queue:
     queue.extend(addList)
     queue.extend(deleteList)
     queue.extend(changeList)
     print("current queue is: ", queue)
-    count += 1
 
 
 #  ---------- SUB FUNCTIONS -------------------------------------------------------
 
 #  ------- ADD A LETTER -----------------------------------------------------------
-def addLetter(wordInfo, hashmap, visitedHashmap):
+def addLetter(wordInfo, dictionary, visitedHashmap):
   # return all possible transition words that exist in the dict after adding a letter to the current word
   transitionWords = []
   alphabets = 'abcdefghijklmnopqrstuvwxyz'
@@ -49,20 +47,18 @@ def addLetter(wordInfo, hashmap, visitedHashmap):
     for char in alphabets:
       nextWord = word[:i] + char + word[i:]
 
-      if nextWord in hashmap:
+      if nextWord in dictionary and nextWord not in visitedHashmap:
         # list of next words to add to the queue
         transitionWords.append([nextWord, nextPathLength])
 
         # adding to visited to back trace for result list
-        if nextWord not in visitedHashmap:
-          visitedHashmap[nextWord] = word
-
+        visitedHashmap[nextWord] = word
 
   return transitionWords
 
 
 #  ------- DELETE A LETTER --------------------------------------------------------
-def deleteLetter(wordInfo, hashmap, visitedHashmap):
+def deleteLetter(wordInfo, dictionary, visitedHashmap):
   # return all possible transition words that exist in the dict after adding a letter to the current word
   transitionWords = []
   word = wordInfo[0]
@@ -73,21 +69,20 @@ def deleteLetter(wordInfo, hashmap, visitedHashmap):
   for i in range(len(word)):
     nextWord = word[:i] + word[i + 1:]
 
-    if nextWord in hashmap:
+    if nextWord in dictionary and nextWord not in visitedHashmap:
       # list of next words to add to the queue
       transitionWords.append([nextWord, nextPathLength])
 
       # adding to visited to back trace for result list
-      if nextWord not in visitedHashmap:
-        visitedHashmap[nextWord] = word
-  print("letter deleted")
+      visitedHashmap[nextWord] = word
+
   return transitionWords
 
 
 #  ------- CHANGE A LETTER --------------------------------------------------------
-def changeLetter(wordInfo, hashmap, visitedHashmap):
+def changeLetter(wordInfo, dictionary, visitedHashmap):
   # return all possible transition words that exist in the dict after adding a letter to the current word
-  transitionWords = [["fellow", 2]]
+  transitionWords = []
   alphabets = 'abcdefghijklmnopqrstuvwxyz'
   word = wordInfo[0]
   pathLength = wordInfo[1]
@@ -98,15 +93,13 @@ def changeLetter(wordInfo, hashmap, visitedHashmap):
     for char in alphabets:
       nextWord = word[:i] + char + word[i+1:]
 
-      if nextWord in hashmap:
+      if nextWord in dictionary and nextWord not in visitedHashmap:
         # list of next words to add to the queue
         transitionWords.append([nextWord, nextPathLength])
 
         # adding to visited to back trace for result list
-        if nextWord not in visitedHashmap:
-          visitedHashmap[nextWord] = word
+        visitedHashmap[nextWord] = word
 
-  print("switched from the ABC's")
   return transitionWords
 
 
@@ -120,6 +113,6 @@ def resultList(visitedHashmap):
 # --------- TEST EXAMPLES ---------------------------------------------------------
 first = "tag"
 last = "bowl"
-listOfWords = ["tag", "tar", "bar", "boar", "boa", "bow", "bowl"]
+listOfWords = ["tag", "tar", "bar", "boar", "boa", "bow", "bowl", "fowl", "rag"]
 
 shortestPossiblePath(first, last, listOfWords)
