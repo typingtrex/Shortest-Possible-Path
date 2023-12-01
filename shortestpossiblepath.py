@@ -57,6 +57,15 @@ def addLetter(wordInfo, hashmap):
 def deleteLetter(wordInfo, hashmap):
   # return all possible transition words that exist in the dict after adding a letter to the current word
   transitionWords = []
+  word = wordInfo[0]
+  pathLength = wordInfo[1]
+  nextPathLength = pathLength + 1
+
+  # delete one letter at a time and check if the word exists in dict
+  for i in range(len(word)):
+    nextWord = word[:i] + word[i + 1:]
+    if nextWord in hashmap:
+      transitionWords.append([nextWord, nextPathLength])
   print("letter deleted")
   return transitionWords
 
