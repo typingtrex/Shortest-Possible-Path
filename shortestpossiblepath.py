@@ -31,9 +31,11 @@ def shortestPossiblePath(start, end, dictionaryList):
     print("current queue is: ", queue)
     count += 1
 
+
 #  ---------- SUB FUNCTIONS -------------------------------------------------------
-#  ------- ADD A LETTER ----------------
-def addLetter(wordInfo, hashmap):
+
+#  ------- ADD A LETTER -----------------------------------------------------------
+def addLetter(wordInfo, hashmap, visitedHashmap):
   # return all possible transition words that exist in the dict after adding a letter to the current word
   transitionWords = []
   alphabets = 'abcdefghijklmnopqrstuvwxyz'
@@ -46,15 +48,21 @@ def addLetter(wordInfo, hashmap):
   for i in range(len(word) + 1):
     for char in alphabets:
       nextWord = word[:i] + char + word[i:]
-      print("word: ", word)
-      print("nextWord", nextWord)
+
       if nextWord in hashmap:
+        # list of next words to add to the queue
         transitionWords.append([nextWord, nextPathLength])
+
+        # adding to visited to back trace for result list
+        if nextWord not in visitedHashmap:
+          visitedHashmap[nextWord] = word
+
 
   return transitionWords
 
+
 #  ------- DELETE A LETTER --------------------------------------------------------
-def deleteLetter(wordInfo, hashmap):
+def deleteLetter(wordInfo, hashmap, visitedHashmap):
   # return all possible transition words that exist in the dict after adding a letter to the current word
   transitionWords = []
   word = wordInfo[0]
@@ -64,13 +72,20 @@ def deleteLetter(wordInfo, hashmap):
   # delete one letter at a time and check if the word exists in dict
   for i in range(len(word)):
     nextWord = word[:i] + word[i + 1:]
+
     if nextWord in hashmap:
+      # list of next words to add to the queue
       transitionWords.append([nextWord, nextPathLength])
+
+      # adding to visited to back trace for result list
+      if nextWord not in visitedHashmap:
+        visitedHashmap[nextWord] = word
   print("letter deleted")
   return transitionWords
 
+
 #  ------- CHANGE A LETTER --------------------------------------------------------
-def changeLetter(wordInfo, hashmap):
+def changeLetter(wordInfo, hashmap, visitedHashmap):
   # return all possible transition words that exist in the dict after adding a letter to the current word
   transitionWords = [["fellow", 2]]
   alphabets = 'abcdefghijklmnopqrstuvwxyz'
@@ -82,16 +97,23 @@ def changeLetter(wordInfo, hashmap):
   for i in range(len(word)):
     for char in alphabets:
       nextWord = word[:i] + char + word[i+1:]
+
       if nextWord in hashmap:
+        # list of next words to add to the queue
         transitionWords.append([nextWord, nextPathLength])
+
+        # adding to visited to back trace for result list
+        if nextWord not in visitedHashmap:
+          visitedHashmap[nextWord] = word
 
   print("switched from the ABC's")
   return transitionWords
 
+
 #  ------- CREATE LIST FROM START TO END WITH THE SHORTEST PATHWAY ----------------
-def resultList(hashmap):
+def resultList(visitedHashmap):
   # use end word to traverse back through the
-  print("visted dictionary ", hashmap)
+  print("visted dictionary ", visitedHashmap)
 
 
 
