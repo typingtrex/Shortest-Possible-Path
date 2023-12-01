@@ -8,7 +8,7 @@ Welcome! Shortest-Possible-Path is a repository that holds a Python3 function th
 - end word
 - dictionary (list)
 
-and returns the shortest possible pathway from the start word to the end word by changing one letter at a time. Each intermediate word must exist in the given dictionary. Result is in a list format containing the start word, all intermediates, and the end word. Return _None_ if no possible path exists.
+and returns the shortest possible pathway from the start word to the end word by changing one letter at a time. Each intermediate word must exist in the given dictionary. Result is in a list format containing the start word, all intermediates, and the end word. Return _None_ if there are no paths from start to end.
 
 ## Description Overview:
 
@@ -33,3 +33,42 @@ and returns the shortest possible pathway from the start word to the end word by
   _None_ if there is no possible path.
 
 ## Prerequisites:
+
+- Python 3.11.5 or higher
+
+## Installation:
+
+- You can use this function by downloading the repository as a ZIP file or by cloning the repository.
+  <img src="static/codebutton.png" align="center" />
+
+### Download as a ZIP file
+
+1. Click on the **Code** button and click on **Download ZIP**.
+2. Go to your computer's download file and click on the zip to open the downloaded folder.
+3. To extract the function drag the **shortestPossiblePathFunction.py** file to your project folder.
+
+### Download by cloning the repository <img src="static/clone.png" align="center" style="height: 60px; width:120px;padding=100px" />
+
+1.  Click on the **Code** button and click on **HTTPS**.
+2.  Copy the url or click on the button next to it to copy the link.
+3.  Open your terminal and navigate to destination folder for this repository
+4.  Type into your terminal the command "git clone" and paste the URL.
+
+        git clone https://github.com/typingtrex/Shortest-Possible-Path.git
+
+## Using the function
+
+1.  IMPORT:
+
+    - Go to your code editor and open the file, where you'd like to use the function shortestPossiblePath.
+    - Import the function by adding the line below:
+
+            from <PATH TO FILE> import shortestPossiblePath
+
+    - call shortestPossiblePath by passing in **start word**, **end word**, and **dictionary**
+
+            first = "tag"
+            last = "bowl"
+            dictionary = ["tag", "tar", "bar", "boar", "boa", "bow", "bowl", "fowl", "rag", "tal", "bal", "bol"]
+
+            shortestPossiblePath(first, last, dictionary)
