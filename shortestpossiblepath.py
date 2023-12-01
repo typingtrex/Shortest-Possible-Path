@@ -41,8 +41,9 @@ def addLetter(wordInfo, hashmap):
   pathLength = wordInfo[1]
   nextPathLength = pathLength + 1
 
-  # adding a letter from (a - z) for each index in word -- will this add to the end of the word as well?
-  for i in range(len(word)):
+  # adding a letter from (a - z) to each index in word
+  # Will this add to the end of the word as well? YES! because of the len(word) + 1
+  for i in range(len(word) + 1):
     for char in alphabets:
       nextWord = word[:i] + char + word[i:]
       print("word: ", word)
@@ -55,7 +56,7 @@ def addLetter(wordInfo, hashmap):
 #  ------- DELETE A LETTER --------------------------------------------------------
 def deleteLetter(wordInfo, hashmap):
   # return all possible transition words that exist in the dict after adding a letter to the current word
-  transitionWords = [["yellow", 2], ["bye", 2]]
+  transitionWords = []
   print("letter deleted")
   return transitionWords
 
@@ -64,6 +65,16 @@ def changeLetter(wordInfo, hashmap):
   # return all possible transition words that exist in the dict after adding a letter to the current word
   transitionWords = [["fellow", 2]]
   alphabets = 'abcdefghijklmnopqrstuvwxyz'
+  word = wordInfo[0]
+  pathLength = wordInfo[1]
+  nextPathLength = pathLength + 1
+
+  # changing a letter with (a - z) for each index in word
+  for i in range(len(word)):
+    for char in alphabets:
+      nextWord = word[:i] + char + word[i+1:]
+      if nextWord in hashmap:
+        transitionWords.append([nextWord, nextPathLength])
 
   print("switched from the ABC's")
   return transitionWords
