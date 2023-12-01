@@ -19,19 +19,19 @@ class ShortestPossiblePath:
 # refactoring -- can I change transitionWords to be a list in my init to push to as I find them in all of my subfunctions??
   def addLetter(self, wordInfo):
     # return all possible transition words that exist in the dict after adding a letter to the current word
-    transitionWords = []
+    transitionWords = [["hello", 2]]
     print("letter added")
-    return
+    return transitionWords
 
   def deleteLetter(self, wordInfo):
     # return all possible transition words that exist in the dict after adding a letter to the current word
-    transitionWords = []
+    transitionWords = [["yellow", 2], ["bye", 2]]
     print("letter deleted")
     return transitionWords
 
   def changeLetter(self, wordInfo):
     # return all possible transition words that exist in the dict after adding a letter to the current word
-    transitionWords = []
+    transitionWords = [["fellow", 2]]
     print("switched from the ABC's")
     return transitionWords
 
@@ -41,13 +41,23 @@ class ShortestPossiblePath:
     # queue = Queue([self.start, 1])
     # regular array pop(0) is a shift -- can I make this a better time complexity later?
     queue = [[self.start, 1]]
+    count = 1
 
-    while queue:
+    while queue and count < 4:
       current = queue.pop(0)
-      currentWord = current[0]
-      currentLength = current[1]
+      # currentWord = current[0]
+      # currentLength = current[1]
 
-      self.addLetter(currentWord)
+      addList = self.addLetter(current)
+      deleteList = self.deleteLetter(current)
+      changeList = self.changeLetter(current)
+
+      # adding all the transitionWords to check from add, delete, and change functions to the queue:
+      queue.extend(addList)
+      queue.extend(deleteList)
+      queue.extend(changeList)
+      print("current queue is: ", queue)
+      count += 1
 
 
 
