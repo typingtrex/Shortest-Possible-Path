@@ -8,7 +8,7 @@ Welcome! Shortest-Possible-Path is a repository that holds a Python3 function th
 - end word
 - dictionary (list)
 
-and returns the shortest possible pathway from the start word to the end word by changing one letter at a time. Each intermediate word must exist in the given dictionary. Result is in a list format containing the start word, all intermediates, and the end word. Return _None_ if there are no paths from start to end.
+and returns the shortest possible pathway from the start word to the end word by changing one letter at a time. Each intermediate word must exist in the given dictionary. The result is in a list format containing the start word, all the intermediate words, and the end word. Return _None_ if there are no paths from start to end.
 
 ## Description Overview:
 
@@ -60,7 +60,7 @@ and returns the shortest possible pathway from the start word to the end word by
 
 1.  **IMPORT**:
 
-- Go to your code editor and open the file, where you'd like to use the function shortestPossiblePath.
+- Go to your code editor and open the file where you'd like to use the function shortestPossiblePath.
 - Import the function by adding the line below:
 
         from <PATH TO FILE> import shortestPossiblePath
@@ -86,4 +86,6 @@ and returns the shortest possible pathway from the start word to the end word by
 
 ### Thank you and congrats on reaching the end of the README!
 
-I hope this function and repository will serve you well on your quest for the shortest possible path from a start to end word. Please reach out to talk about anything code, time complexity, space complexity, and more by email at jiyoung.kimmy@gmail.com or via [LinkedIn](https://www.linkedin.com/in/ji-young-kim/). Cheers!
+I hope this function and repository will serve you well on your quest for the shortest possible path from a start word to an end word. Please reach out to talk about anything code, time complexity, space complexity, and more by email at jiyoung.kimmy@gmail.com or via [LinkedIn](https://www.linkedin.com/in/ji-young-kim/).
+
+Cheers!
