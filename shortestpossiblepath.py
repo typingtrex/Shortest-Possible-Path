@@ -16,17 +16,24 @@ class ShortestPossiblePath:
     # To make look up in the dictionary O(1) time complexity as opposed to O(N), where N is equal to the number of words in dictionaryList
     self.dictionarySet = set(dictionaryList)
 
+# refactoring -- can I change transitionWords to be a list in my init to push to as I find them in all of my subfunctions??
   def addLetter(self, wordInfo):
     # return all possible transition words that exist in the dict after adding a letter to the current word
+    transitionWords = []
     print("letter added")
+    return
 
   def deleteLetter(self, wordInfo):
     # return all possible transition words that exist in the dict after adding a letter to the current word
+    transitionWords = []
     print("letter deleted")
+    return transitionWords
 
   def changeLetter(self, wordInfo):
     # return all possible transition words that exist in the dict after adding a letter to the current word
+    transitionWords = []
     print("switched from the ABC's")
+    return transitionWords
 
   def shortestPathway(self):
     # Implementing a Breadth First Search:
