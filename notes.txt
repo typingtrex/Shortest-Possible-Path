@@ -1,6 +1,6 @@
 # Understanding the problem details - response from Fokke included:
 
-'''
+
 Premise:
 
 Given three parameters of start word, end word, and a dictionary, which is a list of words (i.e. ['cog', 'bog', 'dog', 'dot']), return the shortest path for a starting word to become the ending word.
@@ -21,42 +21,8 @@ Assumptions and Clarifications:
   --- edge case?? -----
   1. In the case of multiple solutions of the same shortest path length, return any one of them *** point this out to Fokke ***
 
-'''
-
-'''
-
-The team has this code, and those outside of the team need instructions on how to use it
-
--- format good
-
-'''
 
 
 
 
-# ----- Creating subfunctions: ----------------
-# 1. Swap
-def swap(word, dictionaryMap, queue):
-  alphabets = 'abcdefghijklmnopqrstuvwxyz'
-  for i in range(len(word)):
-    for char in alphabets:
-      # all letters before i (index) + char + all letters after i
-      nextWord = word[:i] + char + word[i + 1:]
 
-      if nextWord in dictionaryMap & next in dictionaryMap != "seen":
-        dictionaryMap[nextWord] = "seen"
-        queue.append(nextWord, length + 1)
-
-  return queue
-
-# Add
-
-def add(word, endWord) {
-  if len(word) < len(endWord):
-
-}
-
-# testWord = "hello"
-# testIdx = 1
-
-# swap(testWord, testIdx, {})
