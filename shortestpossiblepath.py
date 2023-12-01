@@ -1,3 +1,9 @@
+# -------- Function File --------------------
+'''
+  1. Below you will find the function that returns the shortest possible path from a start word to an end word.
+  2. Please review the Specifications.md file for more details on the conditions of the function and its parameters.
+  3. Thank you and happy searching for the shortest path!
+'''
 
 def shortestPossiblePath(start, end, dictionaryList):
   dictionarySet = set(dictionaryList)
@@ -26,19 +32,19 @@ def shortestPossiblePath(start, end, dictionaryList):
     count += 1
 
 
-def addLetter(wordInfo):
+def addLetter(wordInfo, hashmap):
   # return all possible transition words that exist in the dict after adding a letter to the current word
   transitionWords = []
   print("letter added")
   return transitionWords
 
-def deleteLetter(wordInfo):
+def deleteLetter(wordInfo, hashmap):
   # return all possible transition words that exist in the dict after adding a letter to the current word
   transitionWords = [["yellow", 2], ["bye", 2]]
   print("letter deleted")
   return transitionWords
 
-def changeLetter(wordInfo):
+def changeLetter(wordInfo, hashmap):
   # return all possible transition words that exist in the dict after adding a letter to the current word
   transitionWords = [["fellow", 2]]
   print("switched from the ABC's")
