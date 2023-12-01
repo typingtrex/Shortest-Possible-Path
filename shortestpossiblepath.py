@@ -6,6 +6,9 @@ from collections import deque
   2. Please review the Specifications.md file for more details on the conditions of the function and its parameters.
   3. Thank you and happy searching for the shortest path!
 '''
+
+ALPHABETS = 'abcdefghijklmnopqrstuvwxyz'
+
 #  ---------- MAIN FUNCTION -------------------------------------------------------
 def shortestPossiblePath(start, end, dictionaryList):
   dictionarySet = set(dictionaryList)
@@ -19,7 +22,6 @@ def shortestPossiblePath(start, end, dictionaryList):
 
     # our baseline for the return result:
     if currentWord == end:
-      # print("path length is: ", current[1])
       return resultList(start, end, visitedHashmap)
 
     addList = addLetter(current, dictionarySet, visitedHashmap)
@@ -31,6 +33,9 @@ def shortestPossiblePath(start, end, dictionaryList):
     queue.extend(deleteList)
     queue.extend(changeList)
 
+  # no possible path
+  return None
+
 
 #  ---------- SUB FUNCTIONS -------------------------------------------------------
 
@@ -38,15 +43,14 @@ def shortestPossiblePath(start, end, dictionaryList):
 def addLetter(wordInfo, dictionary, visitedHashmap):
   # return all possible transition words that exist in the dict after adding a letter to the current word
   transitionWords = []
-  alphabets = 'abcdefghijklmnopqrstuvwxyz'
   word = wordInfo[0]
   pathLength = wordInfo[1]
   nextPathLength = pathLength + 1
 
   # adding a letter from (a - z) to each index in word
-  # Will this add to the end of the word as well? YES! because of the len(word) + 1
+  # This will add to the end of the word as well because of the len(word) + 1
   for i in range(len(word) + 1):
-    for char in alphabets:
+    for char in ALPHABETS:
       nextWord = word[:i] + char + word[i:]
 
       if nextWord in dictionary and nextWord not in visitedHashmap:
@@ -85,14 +89,13 @@ def deleteLetter(wordInfo, dictionary, visitedHashmap):
 def changeLetter(wordInfo, dictionary, visitedHashmap):
   # return all possible transition words that exist in the dict after adding a letter to the current word
   transitionWords = []
-  alphabets = 'abcdefghijklmnopqrstuvwxyz'
   word = wordInfo[0]
   pathLength = wordInfo[1]
   nextPathLength = pathLength + 1
 
   # changing a letter with (a - z) for each index in word
   for i in range(len(word)):
-    for char in alphabets:
+    for char in ALPHABETS:
       nextWord = word[:i] + char + word[i+1:]
 
       if nextWord in dictionary and nextWord not in visitedHashmap:
@@ -107,11 +110,10 @@ def changeLetter(wordInfo, dictionary, visitedHashmap):
 
 #  ------- CREATE LIST FROM START TO END WITH THE SHORTEST PATHWAY ----------------
 def resultList(start, end, visitedHashmap):
-  # use end word to traverse back through the
-  shortestPathway = [end]
+  # use end word to traverse back through the visited hashmap to the start word
 
   # use deque to make adding to the left an O(1) Time Complexity
-  shortestPathway = deque(shortestPathway)
+  shortestPathway = deque([end])
 
   word = end
 
@@ -120,9 +122,9 @@ def resultList(start, end, visitedHashmap):
     shortestPathway.appendleft(previousWord)
     word = previousWord
 
-  # change back format from deque to a list
-  resultingPath = [*shortestPathway]
-  return resultingPath
+  # change format from deque to a list
+  pathResult = [*shortestPathway]
+  return pathResult
 
 
 
