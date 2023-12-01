@@ -58,17 +58,28 @@ and returns the shortest possible pathway from the start word to the end word by
 
 ## Using the function
 
-1.  IMPORT:
+1.  **IMPORT**:
 
-    - Go to your code editor and open the file, where you'd like to use the function shortestPossiblePath.
-    - Import the function by adding the line below:
+- Go to your code editor and open the file, where you'd like to use the function shortestPossiblePath.
+- Import the function by adding the line below:
 
-            from <PATH TO FILE> import shortestPossiblePath
+        from <PATH TO FILE> import shortestPossiblePath
 
-    - call shortestPossiblePath by passing in **start word**, **end word**, and **dictionary**
+- Call shortestPossiblePath by passing in **start word**, **end word**, and **dictionary**
 
-            first = "tag"
-            last = "bowl"
-            dictionary = ["tag", "tar", "bar", "boar", "boa", "bow", "bowl", "fowl", "rag", "tal", "bal", "bol"]
+        first = "tag"
+        last = "bowl"
+        dictionary = ["tag", "tar", "bar", "boar", "boa", "bow", "bowl", "fowl", "rag", "tal", "bal", "bol"]
 
-            shortestPossiblePath(first, last, dictionary)
+        shortestPossiblePath(first, last, dictionary)
+
+2. **RUNNING FROM TERMINAL**:
+
+- If you cloned the repository, go to your terminal and **cd** (navigate) to your **Shortest-Possible-Path** directory
+- Type in your terminal
+
+          python test.py
+
+  This will run the sample test file and will print the results in your terminal.
+
+  <img src="static/terminaltestrun.png" align="center" style="height: 90px; width:400px;padding=100px" />
