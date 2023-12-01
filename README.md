@@ -83,3 +83,7 @@ and returns the shortest possible pathway from the start word to the end word by
   This will run the sample test file and will print the results in your terminal.
 
   <img src="static/terminaltestrun.png" align="center" style="height: 90px; width:400px;padding=100px" />
+
+### Thank you and congrats on reaching the end of the README!
+
+I hope this function and repository will serve you well on your quest for the shortest possible path from a start to end word. Please reach out to talk about anything code, time complexity, space complexity, and more by email at jiyoung.kimmy@gmail.com or via [LinkedIn](https://www.linkedin.com/in/ji-young-kim/). Cheers!
